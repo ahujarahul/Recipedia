@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.Scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         // setContent block - defines the Activity's layout
         setContent {
-            Column {
+            // modifier added to make scrollable Column
+            Column (modifier = Modifier.verticalScroll(rememberScrollState())) {
                 // filling up last param. values of the Column lambda function
                 Image(bitmap = imageFromResource(resources, R.drawable.happy_meal),
                     contentDescription = null,
