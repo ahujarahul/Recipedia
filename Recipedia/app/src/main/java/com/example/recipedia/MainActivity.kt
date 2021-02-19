@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,19 +37,33 @@ class MainActivity : AppCompatActivity() {
 
                 // padding for all sides of the column
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "McDonald's Happy Meal",
-                        fontWeight = FontWeight.Bold,
-                        fontStyle = FontStyle.Italic,
-                        style = TextStyle(fontSize = 24.sp))
-                    Spacer(modifier = Modifier.padding(top = 8.dp))
-                    Text(text = "\$5.99",
-                        color = Color(0xFF009900),
-                        fontWeight = FontWeight.Bold,
-                        style = TextStyle(fontSize = 16.sp))
+                    Row(modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text(text = "McDonald's Happy Meal",
+                            fontWeight = FontWeight.Bold,
+                            fontStyle = FontStyle.Italic,
+                            style = TextStyle(fontSize = 24.sp),
+                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
+
+                        Text(text = "\$5.99",
+                            color = Color(0xFF009900),
+                            fontWeight = FontWeight.Bold,
+                            style = TextStyle(fontSize = 16.sp),
+                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
+                    }
                     // space between the text
                     Spacer(modifier = Modifier.padding(top = 8.dp))
+
                     Text(text = "650 Calories")
+
                     Spacer(modifier = Modifier.padding(top = 8.dp))
+
+                    Button(onClick = {},
+                        modifier = Modifier.align(alignment = Alignment.CenterHorizontally)) {
+                        Text(text = "Order Now",
+                            style = TextStyle(fontSize = 14.sp),
+                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
+                    }
                 }
             }
         }
