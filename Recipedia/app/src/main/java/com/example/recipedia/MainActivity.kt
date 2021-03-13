@@ -2,70 +2,15 @@ package com.example.recipedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.imageFromResource
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        // setContent block - defines the Activity's layout
-        setContent {
-            // modifier added to make scrollable Column
-            Column (modifier = Modifier.verticalScroll(rememberScrollState())) {
-                // filling up last param. values of the Column lambda function
-                Image(bitmap = imageFromResource(resources, R.drawable.happy_meal),
-                    contentDescription = null,
-                    modifier = Modifier.height(300.dp),
-                    contentScale = ContentScale.Crop,
-                    alignment = Alignment.Center)
-
-                // padding for all sides of the column
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text(text = "McDonald's Happy Meal",
-                            fontWeight = FontWeight.Bold,
-                            fontStyle = FontStyle.Italic,
-                            style = TextStyle(fontSize = 24.sp),
-                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
-
-                        Text(text = "\$5.99",
-                            color = Color(0xFF009900),
-                            fontWeight = FontWeight.Bold,
-                            style = TextStyle(fontSize = 16.sp),
-                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
-                    }
-                    // space between the text
-                    Spacer(modifier = Modifier.padding(top = 8.dp))
-
-                    Text(text = "650 Calories")
-
-                    Spacer(modifier = Modifier.padding(top = 8.dp))
-
-                    Button(onClick = {},
-                        modifier = Modifier.align(alignment = Alignment.CenterHorizontally)) {
-                        Text(text = "Order Now",
-                            style = TextStyle(fontSize = 14.sp),
-                            modifier = Modifier.align(alignment = Alignment.CenterVertically))
-                    }
-                }
-            }
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, RecipeListFragment.newInstance())
+            .commit()
     }
 }
